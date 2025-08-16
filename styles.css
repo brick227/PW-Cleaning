@@ -1,31 +1,139 @@
-/* Pricing grid layout */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin: 40px auto;
-  max-width: 1200px;
-  padding: 0 20px;
+/* ===== Brand Colors ===== */
+:root{
+  --purple:#6A1B9A;     /* primary */
+  --lav:#B39DDB;        /* accent */
+  --cream:#FFF8E7;      /* background */
+  --gold:#C6A664;       /* CTA */
+  --char:#2E2E2E;       /* text */
 }
 
-/* Each card */
-.pricing-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-  transition: transform 0.2s ease;
+/* ===== Base ===== */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--char);
+  background:var(--cream);
+  line-height:1.6;
+}
+a{color:var(--purple);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ===== Header ===== */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:var(--purple);color:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+.header-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+.brand{font-weight:900;color:#fff;font-size:1.1rem;letter-spacing:.3px}
+.brand span{color:var(--gold)}
+.main-nav a{color:#fff;margin-left:1rem;font-weight:700;opacity:.95}
+.main-nav a:hover{opacity:1}
+.btn{background:var(--gold);color:#000;padding:.55rem .9rem;border-radius:.6rem;font-weight:800;display:inline-block}
+.btn-sm{padding:.45rem .7rem}
+.btn-outline{background:transparent;color:#fff;border:2px solid #fff}
+
+/* ===== Hero (with image + gradient overlay) ===== */
+.hero{
+  min-height:62vh; display:grid; align-items:center; text-align:center; color:#fff;
+  background:
+    linear-gradient(135deg, rgba(106,27,154,.85), rgba(179,157,219,.65) 55%, rgba(59,21,86,.9)),
+    url('images/pw-hero.jpg') center/cover no-repeat;
+}
+.hero-inner{padding:4rem 1rem}
+.hero h1{font-size:clamp(2rem,6vw,3.2rem);margin:0 0 .6rem}
+.hero p{font-size:clamp(1rem,2.4vw,1.1rem);opacity:.97;margin:0 0 1.2rem}
+.hero-ctas .btn{margin:.25rem}
+.badges{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:.75rem}
+.badges span{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:.35rem .6rem;border-radius:1rem;font-weight:700}
+
+/* ===== Sections ===== */
+.section{padding:3rem 0}
+.section.alt{background:#fff}
+h2{font-size:1.9rem;margin:0 0 1rem;color:#1f1b24;border-bottom:3px solid var(--lav);display:inline-block;padding-bottom:.2rem}
+.section .section-title{display:block;text-align:center;margin-bottom:1.5rem}
+.section .section-title h2{border:none}
+.section .section-title .rule{width:90px;height:4px;background:var(--lav);border-radius:999px;margin:.35rem auto 0}
+
+/* ===== Service Cards (home page) ===== */
+.service-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem
+}
+.service{
+  background:#fff;border:1px solid #eee;border-radius:.8rem;padding:1rem;
+  box-shadow:0 2px 10px rgba(0,0,0,.05)
+}
+.service img{width:100%;height:200px;object-fit:cover;border-radius:.6rem;margin-bottom:.6rem}
+.service h3{margin:.3rem 0;color:var(--purple)}
+.service-link{display:block;color:inherit;text-decoration:none}
+.service-link .service{transition:transform .18s ease, box-shadow .18s ease}
+.service-link:hover .service{transform:translateY(-4px);box-shadow:0 8px 22px rgba(0,0,0,.12)}
+
+/* ===== Icon list (Why Us) ===== */
+.icons{list-style:none;padding:0;display:grid;gap:.6rem;max-width:800px;margin:0 auto}
+.icons li{background:#fff;border:1px solid #eee;border-left:6px solid var(--purple);
+  border-radius:.6rem;padding:.8rem 1rem;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+
+/* ===== Contact ===== */
+.contact .contact-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media (min-width:860px){.contact .contact-grid{grid-template-columns:1fr 1fr}}
+.contact form{display:grid;gap:.6rem;background:#fff;border:1px solid #eee;border-radius:.8rem;padding:1rem;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.contact input,.contact select,.contact textarea{padding:.7rem;border:1px solid #ddd;border-radius:.5rem;width:100%}
+.contact textarea{min-height:140px}
+.note{background:#fff;border:1px dashed var(--lav);padding:.75rem;border-radius:.6rem;margin-top:.5rem}
+
+/* ===== Pricing Cards (3 per row) ===== */
+.pricing{padding:2rem 0}
+.pricing h2{text-align:center;display:block;border:none;margin-bottom:.75rem}
+.pricing .rule{width:90px;height:4px;background:var(--lav);border-radius:999px;margin:.35rem auto 1.25rem}
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:20px;
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+}
+@media (max-width:980px){
+  .pricing-grid{grid-template-columns:repeat(2, 1fr)}
+}
+@media (max-width:640px){
+  .pricing-grid{grid-template-columns:1fr}
 }
 
-.pricing-card img {
-  max-width: 100%;
-  height: 150px; /* keeps boxes smaller */
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
+.pricing-card{
+  background:#fff;
+  border:1px solid #eee;
+  border-radius:12px;
+  padding:16px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.06);
+  transition:transform .18s ease, box-shadow .18s ease;
 }
+.pricing-card:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgba(0,0,0,.12)}
+.pricing-card img{
+  width:100%;
+  height:150px;              /* keeps cards compact */
+  object-fit:cover;
+  border-radius:8px;
+  margin-bottom:12px;
+}
+.pricing-card h3{margin:.4rem 0;color:var(--purple)}
+.pricing-card p{margin:.2rem 0}
 
-.pricing-card:hover {
-  transform: translateY(-5px);
+/* ===== Gallery (Successful Clients) ===== */
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px
+}
+.gallery-card{background:#fff;border:1px solid #eee;border-radius:.8rem;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.gallery-card img{width:100%;height:160px;object-fit:cover}
+.gallery-card .meta{padding:.6rem .8rem}
+.tag{display:inline-block;background:var(--lav);color:#321d48;font-weight:700;font-size:.8rem;padding:.2rem .5rem;border-radius:.6rem;margin-right:.35rem}
+
+/* ===== Footer ===== */
+.site-footer{
+  background:#fff;color:#666;text-align:center;border-top:1px solid #eee;padding:1rem;margin-top:2rem
 }
