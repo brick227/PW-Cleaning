@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
   <!-- HEADER -->
   <header class="site-header">
     <div class="container header-row">
@@ -17,24 +18,23 @@
         <a href="#why">Why Us</a>
         <a href="#areas">Service Areas</a>
         <a href="#faqs">FAQs</a>
+        <a href="projects.html">Successful Clients</a>
         <a href="#contact" class="btn btn-sm">Get a Quote</a>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="container hero-inner">
+  <section id="home" class="page-hero" style="
+      background:
+        linear-gradient(135deg, rgba(106,27,154,.85), rgba(179,157,219,.85)),
+        url('images/pw-hero.jpg') center/cover no-repeat;">
+    <div class="container">
       <h1>Reliable Home & Office Cleaning in Sioux Falls</h1>
       <p>Local. Trusted. Flexible scheduling for weekly, bi-weekly, or one-time deep cleans.</p>
-      <div class="hero-ctas">
+      <div style="margin-top:1rem;">
         <a href="#contact" class="btn">Get a Free Quote</a>
-        <a href="#services" class="btn btn-outline">View Services</a>
-      </div>
-      <div class="badges">
-        <span>Licensed & Insured</span>
-        <span>100% Satisfaction</span>
-        <span>Eco-friendly Options</span>
+        <a href="#services" class="btn" style="background:#fff;color:#6a1b9a;">View Services</a>
       </div>
     </div>
   </section>
@@ -43,7 +43,9 @@
   <section id="services" class="section">
     <div class="container">
       <h2>Our Services</h2>
-      <p class="muted">Choose a plan that fits your home and schedule.</p>
+      <p class="muted" style="text-align:center;margin-bottom:1.5rem;">
+        Choose a plan that fits your home and schedule.
+      </p>
 
       <div class="service-grid">
         <a class="service-link" href="basic-cleaning.html">
@@ -58,7 +60,7 @@
           <article class="service">
             <img src="images/deep-clean.jpg" alt="Deep cleaning service" />
             <h3>Deep Cleaning</h3>
-            <p>Detail work in kitchens/baths, baseboards, doors, high-touch areas.</p>
+            <p>Detail work in kitchens/baths, baseboards, doors, and high-touch areas.</p>
           </article>
         </a>
 
@@ -72,8 +74,8 @@
 
         <a class="service-link" href="office-cleaning.html">
           <article class="service">
-            <img src="images/office-cleaning.jpg" alt="Office janitorial services" />
-            <h3>Office Cleaning</h3>
+            <img src="images/office-cleaning.jpg" alt="Office and commercial cleaning" />
+            <h3>Office & Commercial</h3>
             <p>Desks, conference rooms, kitchens, restrooms, trash & floors.</p>
           </article>
         </a>
@@ -90,14 +92,14 @@
   </section>
 
   <!-- WHY US -->
-  <section id="why" class="section alt">
+  <section id="why" class="section">
     <div class="container">
       <h2>Why Choose PW Cleaning</h2>
-      <ul class="icons">
-        <li>🕒 <strong>On-time & reliable</strong>—we confirm every visit.</li>
-        <li>🧼 <strong>Consistent checklists</strong>—same quality every time.</li>
-        <li>🧾 <strong>Transparent pricing</strong>—no surprises.</li>
-        <li>🌿 <strong>Eco options</strong>—upon request.</li>
+      <ul class="features">
+        <li><strong>On-time & reliable</strong> — we confirm every visit.</li>
+        <li><strong>Consistent checklists</strong> — same quality every time.</li>
+        <li><strong>Transparent pricing</strong> — no surprises.</li>
+        <li><strong>Eco-friendly options</strong> — upon request.</li>
       </ul>
     </div>
   </section>
@@ -106,12 +108,14 @@
   <section id="areas" class="section">
     <div class="container">
       <h2>Service Areas</h2>
-      <p>Sioux Falls • Tea • Brookings • Harrisburg • Brandon • Dell Rapids • Surrounding communities</p>
+      <p style="text-align:center;">
+        Sioux Falls • Tea • Brookings • Harrisburg • Brandon • Dell Rapids • Surrounding communities
+      </p>
     </div>
   </section>
 
   <!-- FAQs -->
-  <section id="faqs" class="section alt">
+  <section id="faqs" class="section">
     <div class="container">
       <h2>FAQs</h2>
       <details>
@@ -131,13 +135,13 @@
 
   <!-- CONTACT -->
   <section id="contact" class="section">
-    <div class="container contact">
+    <div class="container">
       <h2>Get a Free Quote</h2>
       <div class="contact-grid">
         <div>
           <p><strong>Call/Text:</strong> (205) 531-9889</p>
           <p><strong>Email:</strong> <a href="mailto:pwcleaning37@gmail.com">pwcleaning37@gmail.com</a></p>
-          <p class="note">Tell us bedrooms, bathrooms, frequency (one-time, weekly, bi-weekly, monthly), and any add-ons.</p>
+          <p class="muted">Tell us bedrooms, bathrooms, frequency (one-time, weekly, bi-weekly, monthly), and any add-ons.</p>
         </div>
 
         <!-- Formspree endpoint -->
