@@ -6,6 +6,39 @@
   <title>Basic Cleaning | PW Cleaning</title>
   <meta name="description" content="PW Cleaning basic cleaning service includes dusting, vacuuming, mopping, bathrooms, kitchens, and surface tidy-ups in Sioux Falls and nearby areas." />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Pricing Cards */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .price-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: .8rem;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,.05);
+    }
+    .price-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: .6rem;
+      margin-bottom: .6rem;
+    }
+    .price-card h3 {
+      margin: .5rem 0 .25rem;
+      color: var(--purple);
+    }
+    .price-card p {
+      margin: .25rem 0;
+      color: #444;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
   <!-- HEADER -->
@@ -45,23 +78,44 @@
 
       <!-- PRICING -->
       <h2 style="margin-top:1.5rem;">Average Pricing</h2>
-      <table class="pricing-table">
-        <thead>
-          <tr>
-            <th>Home Size</th>
-            <th>Square Footage</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>1-Bedroom</td><td>600–800 sqft</td><td>$90 – $120</td></tr>
-          <tr><td>2-Bedroom</td><td>801–1200 sqft</td><td>$110 – $140</td></tr>
-          <tr><td>3-Bedroom</td><td>1201–2500 sqft</td><td>$130 – $170</td></tr>
-          <tr><td>4-Bedroom</td><td>1800–3000 sqft</td><td>$160 – $220</td></tr>
-          <tr><td>5-Bedroom</td><td>2500–4000 sqft</td><td>$200 – $260</td></tr>
-          <tr><td>6-Bedroom</td><td>2700–6000 sqft</td><td>$240 – $320</td></tr>
-        </tbody>
-      </table>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <img src="images/1bed.jpg" alt="1-Bedroom Home" />
+          <h3>1-Bedroom</h3>
+          <p>600–800 sqft</p>
+          <p>$90 – $120</p>
+        </div>
+        <div class="price-card">
+          <img src="images/2bed.jpg" alt="2-Bedroom Home" />
+          <h3>2-Bedroom</h3>
+          <p>801–1200 sqft</p>
+          <p>$110 – $140</p>
+        </div>
+        <div class="price-card">
+          <img src="images/3bed.jpg" alt="3-Bedroom Home" />
+          <h3>3-Bedroom</h3>
+          <p>1201–2500 sqft</p>
+          <p>$130 – $170</p>
+        </div>
+        <div class="price-card">
+          <img src="images/4bed.jpg" alt="4-Bedroom Home" />
+          <h3>4-Bedroom</h3>
+          <p>1800–3000 sqft</p>
+          <p>$160 – $220</p>
+        </div>
+        <div class="price-card">
+          <img src="images/5bed.jpg" alt="5-Bedroom Home" />
+          <h3>5-Bedroom</h3>
+          <p>2500–4000 sqft</p>
+          <p>$200 – $260</p>
+        </div>
+        <div class="price-card">
+          <img src="images/6bed.jpg" alt="6-Bedroom Home" />
+          <h3>6-Bedroom</h3>
+          <p>2700–6000 sqft</p>
+          <p>$240 – $320</p>
+        </div>
+      </div>
 
       <a class="back-link" href="index.html#services">← Back to Services</a>
     </div>
