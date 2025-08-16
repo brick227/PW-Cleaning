@@ -12,7 +12,7 @@
   <header class="site-header">
     <div class="container header-row">
       <a class="brand" href="#home">PW <span>Cleaning</span></a>
-      <nav class="main-nav">
+      <nav class="main-nav" aria-label="Main">
         <a href="#services">Services</a>
         <a href="#why">Why Us</a>
         <a href="#areas">Service Areas</a>
@@ -23,7 +23,7 @@
   </header>
 
   <!-- HERO -->
-  <section id="home" class="hero">
+  <section id="home" class="hero" role="region" aria-label="Hero">
     <div class="container hero-inner">
       <h1>Reliable Home & Office Cleaning in Sioux Falls</h1>
       <p>Local. Trusted. Flexible scheduling for weekly, bi-weekly, or one-time deep cleans.</p>
@@ -31,7 +31,7 @@
         <a href="#contact" class="btn">Get a Free Quote</a>
         <a href="#services" class="btn btn-outline">View Services</a>
       </div>
-      <div class="badges">
+      <div class="badges" aria-label="Trust badges">
         <span>Licensed & Insured</span>
         <span>100% Satisfaction</span>
         <span>Eco-friendly Options</span>
@@ -40,9 +40,9 @@
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="section">
+  <section id="services" class="section" aria-labelledby="services-title">
     <div class="container">
-      <h2>Our Services</h2>
+      <h2 id="services-title">Our Services</h2>
       <p class="muted">Choose a plan that fits your home and schedule.</p>
 
       <div class="service-grid">
@@ -90,9 +90,9 @@
   </section>
 
   <!-- WHY US -->
-  <section id="why" class="section alt">
+  <section id="why" class="section alt" aria-labelledby="why-title">
     <div class="container">
-      <h2>Why Choose PW Cleaning</h2>
+      <h2 id="why-title">Why Choose PW Cleaning</h2>
       <ul class="icons">
         <li>🕒 <strong>On-time & reliable</strong>—we confirm every visit.</li>
         <li>🧼 <strong>Consistent checklists</strong>—same quality every time.</li>
@@ -103,17 +103,17 @@
   </section>
 
   <!-- AREAS -->
-  <section id="areas" class="section">
+  <section id="areas" class="section" aria-labelledby="areas-title">
     <div class="container">
-      <h2>Service Areas</h2>
+      <h2 id="areas-title">Service Areas</h2>
       <p>Sioux Falls • Tea • Brookings • Harrisburg • Brandon • Dell Rapids • Surrounding communities</p>
     </div>
   </section>
 
   <!-- FAQs -->
-  <section id="faqs" class="section alt">
+  <section id="faqs" class="section alt" aria-labelledby="faqs-title">
     <div class="container">
-      <h2>FAQs</h2>
+      <h2 id="faqs-title">FAQs</h2>
       <details>
         <summary>Do I need to be home?</summary>
         <p>No—most clients provide a lock code or key. We text when finished.</p>
@@ -130,9 +130,9 @@
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section">
+  <section id="contact" class="section" aria-labelledby="contact-title">
     <div class="container contact">
-      <h2>Get a Free Quote</h2>
+      <h2 id="contact-title">Get a Free Quote</h2>
       <div class="contact-grid">
         <div>
           <p><strong>Call/Text:</strong> (205) 531-9889</p>
@@ -140,13 +140,16 @@
           <p class="note">Tell us bedrooms, bathrooms, frequency (one-time, weekly, bi-weekly, monthly), and any add-ons.</p>
         </div>
 
-        <!-- Formspree endpoint set -->
+        <!-- Formspree endpoint -->
         <form id="contactForm" action="https://formspree.io/f/xrbldwdg" method="POST">
           <input type="hidden" name="_subject" value="PW Cleaning Website Quote" />
+
           <label for="name">Name</label>
           <input id="name" type="text" name="name" placeholder="Your name" required />
+
           <label for="email">Email</label>
           <input id="email" type="email" name="email" placeholder="you@email.com" required />
+
           <label for="frequency">How often?</label>
           <select id="frequency" name="frequency">
             <option value="">Select frequency</option>
@@ -155,8 +158,10 @@
             <option>Bi-weekly</option>
             <option>Monthly</option>
           </select>
+
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Home size, preferred dates, add-ons…" required></textarea>
+
           <button class="btn" type="submit">Request Quote</button>
         </form>
       </div>
