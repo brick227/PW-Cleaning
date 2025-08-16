@@ -1,103 +1,108 @@
-/* PW Cleaning – script.js */
+/* PW Cleaning – script.js (refined) */
 
-/* Wait for DOM */
-document.addEventListener("DOMContentLoaded", () => {
-  /* =========================
-     Smooth scroll for in-page links
-     (accounts for sticky header height)
-  ========================== */
-  const header = document.querySelector(".site-header");
-  const headerOffset = header ? header.offsetHeight : 0;
-
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", e => {
-      const href = link.getAttribute("href");
-      if (!href || href === "#") return;
-      const target = document.querySelector(href);
-      if (!target) return; // let normal nav proceed if not found
-      e.preventDefault();
-      const y = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    });
-  });
-
-  /* If the page loads with a hash, offset it so the header doesn't cover it */
-  if (location.hash) {
-    const target = document.querySelector(location.hash);
+/* ========== Smooth scroll for internal anchor links ========== */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
     if (target) {
-      const y = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-      window.scrollTo({ top: y });
+      e.preventDefault();
+      const offset = 70; // header height buffer
+      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
     }
-  }
+  });
+});
 
-  /* =========================
-     Contact form (Formspree)
-     - Light validation
-     - Progressive enhancement: AJAX submit with thank-you message
-       (falls back to normal POST if fetch fails)
-  ========================== */
-  const form = document.getElementById("contactForm");
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      // Basic validation
-      const name = form.querySelector('[name="name"]')?.value.trim();
-      const email = form.querySelector('[name="email"]')?.value.trim();
-      const message = form.querySelector('[name="message"]')?.value.trim();
-      const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email || "");
+/* ========== Sticky header shadow on scroll ========== */
+const header = document.querySelector('.site-header');
+const onScroll = () => {
+  if (!header) return;
+  header.classList.toggle('with-shadow', window.scrollY > 4);
+};
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
 
-      if (!name || !emailOK || !message) {
-        e.preventDefault();
-        alert("Please enter your name, a valid email, and a message.");
-        return;
-      }
-
-      // Try AJAX submit so we can show a friendly success note in-page
-      try {
-        e.preventDefault();
-
-        const data = new FormData(form);
-        const res = await fetch(form.action, {
-          method: "POST",
-          headers: { "Accept": "application/json" },
-          body: data
-        });
-
-        if (res.ok) {
-          // Replace form with a thank-you block
-          form.outerHTML = `
-            <div class="note" role="status" aria-live="polite">
-              <strong>Thanks, ${escapeHTML(name)}!</strong> We received your request and will contact you shortly.
-            </div>`;
-          // Optionally scroll to the thank-you
-          const note = document.querySelector(".note");
-          if (note) {
-            const y = note.getBoundingClientRect().top + window.scrollY - headerOffset - 12;
-            window.scrollTo({ top: y, behavior: "smooth" });
-          }
-        } else {
-          // If Formspree returns an error, fall back to default submission
-          form.submit();
-        }
-      } catch {
-        // Network or CORS issues: fall back to normal submission
-        form.submit();
-      }
-    });
+/* ========== Make entire service card clickable (fallback) ========== */
+document.querySelectorAll('.service').forEach(card => {
+  // If not already wrapped by <a class="service-link">, click the first link inside
+  if (!card.closest('a.service-link')) {
+    const inner = card.querySelector('a[href]');
+    if (inner) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => { window.location.href = inner.href; });
+    }
   }
 });
 
-/* Utility to avoid injecting raw HTML from user fields */
-function escapeHTML(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+/* ========== AJAX Formspree submit with inline feedback ========== */
+const form = document.getElementById('contactForm');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    const isFormspree = /formspree\.io\/f\//i.test(form.action);
+    if (!isFormspree) return; // allow normal submit for other providers
+    e.preventDefault();
+
+    const btn = form.querySelector('button[type="submit"]');
+    const prev = btn ? btn.textContent : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    let msg = form.querySelector('.form-message');
+    if (!msg) {
+      msg = document.createElement('div');
+      msg.className = 'form-message';
+      form.appendChild(msg);
+    }
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        form.reset();
+        msg.textContent = 'Thanks! We received your request and will contact you shortly.';
+        msg.style.color = '#2e7d32';
+      } else {
+        msg.textContent = 'Something went wrong. Please try again or text/call us.';
+        msg.style.color = '#c62828';
+      }
+    } catch {
+      msg.textContent = 'Network error. Please check your connection and try again.';
+      msg.style.color = '#c62828';
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = prev; }
+    }
+  });
 }
 
-/* Example stub for future app integrations (Glide/Adalo) */
-function bookAppointment(date, time) {
-  console.log(`Booking appointment for ${date} at ${time}...`);
-  alert(`Appointment requested for ${date} at ${time}. We’ll confirm by email/text.`);
-}
+/* ========== Simple Lightbox for gallery images (.gallery-item) ========== */
+(function setupLightbox() {
+  const items = document.querySelectorAll('.gallery-item');
+  if (!items.length) return;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox-overlay';
+  const img = document.createElement('img');
+  overlay.appendChild(img);
+  document.body.appendChild(overlay);
+
+  const open = (src, alt) => {
+    img.src = src;
+    img.alt = alt || '';
+    overlay.style.display = 'flex';
+  };
+  const close = () => { overlay.style.display = 'none'; };
+
+  items.forEach(el => {
+    el.addEventListener('click', () => open(el.src, el.alt));
+    el.style.cursor = 'zoom-in';
+  });
+
+  overlay.addEventListener('click', close);
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+
+/* ========== Auto-year in footer (use <span id="year"></span>) ========== */
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
