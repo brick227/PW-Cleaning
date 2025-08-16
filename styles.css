@@ -1,141 +1,173 @@
-/* =========================
-   PW Cleaning – Global Theme
-   ========================= */
+/* ===============================
+   PW Cleaning — Global Theme
+=================================*/
 :root{
   --purple:#6A1B9A;
   --lav:#B39DDB;
   --cream:#FFF8E7;
   --gold:#C6A664;
-  --ink:#2E2E2E;
-  --ink-2:#5c5c5c;
-  --white:#fff;
+  --char:#2E2E2E;
 }
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-img{max-width:100%;display:block}
-
-/* Base */
 body{
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--ink);
+  color:var(--char);
   background:var(--cream);
   line-height:1.6;
 }
 a{color:var(--purple);text-decoration:none}
 a:hover{text-decoration:underline}
-.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
 
-/* Header / Navbar */
-.navbar{
-  position:sticky; top:0; z-index:50;
-  background:var(--purple); color:var(--white);
-  box-shadow:0 2px 12px rgba(0,0,0,.08);
+/* ===============================
+   Header / Navigation (fixed)
+=================================*/
+.site-header{
+  background:var(--purple);
+  color:#fff;
+  position:sticky; top:0; z-index:1000;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
-.navbar .wrap{
-  display:flex; align-items:center; justify-content:space-between;
-  min-height:64px;
+.header-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.9rem 0;
 }
-.logo{font-weight:900; letter-spacing:.3px; font-size:1.2rem}
-.logo .purple{color:#fff}
-.logo .gold{color:var(--gold)}
-.navbar nav{display:flex; gap:18px; align-items:center}
-.navbar nav a{color:#fff; font-weight:700; opacity:.95}
-.navbar nav a:hover{opacity:1; text-decoration:none}
+.brand{font-weight:900;letter-spacing:.5px;color:#fff;font-size:1.25rem}
+.brand span{color:var(--gold)}
+.main-nav a{
+  color:#fff; margin-left:1.2rem; font-weight:600; opacity:.95; white-space:nowrap;
+}
+.main-nav a:hover{opacity:1}
+.btn{background:var(--gold);color:#000;padding:.55rem .85rem;border-radius:.5rem;font-weight:800;display:inline-block}
+.btn-sm{padding:.45rem .7rem}
+.btn-outline{background:transparent;color:#fff;border:2px solid #fff}
 
-/* Buttons */
-.btn{
-  background:var(--gold); color:#000;
-  padding:.6rem .9rem; border-radius:.6rem;
-  font-weight:800; display:inline-block; border:0;
-}
-.btn-outline{
-  background:transparent; color:#fff; border:2px solid #fff;
-  padding:.55rem .85rem; border-radius:.6rem; font-weight:800;
-}
-.btn-small{
-  display:inline-block; font-weight:800;
-  background:var(--purple); color:#fff; border:0;
-  padding:.45rem .7rem; border-radius:.5rem;
-}
-.btn-small:hover{filter:brightness(1.05)}
-
-/* Hero */
+/* ===============================
+   Hero
+=================================*/
 .hero{
-  min-height:54vh;
-  display:grid; place-items:center; text-align:center; color:#fff;
+  min-height:60vh; display:grid; align-items:center; color:#fff; text-align:center;
   background:
-    linear-gradient(135deg, var(--purple) 0%, var(--lav) 55%, #3b1556 100%),
+    radial-gradient(60% 80% at 20% 10%, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 70%),
+    linear-gradient(135deg, var(--purple) 0%, var(--lav) 60%, #3b1556 100%),
     url('images/pw-hero.jpg') center/cover no-repeat;
 }
-.hero .hero-content{max-width:850px; padding:56px 16px}
-.hero h1{margin:0 0 .35rem; font-size:clamp(1.9rem,4.8vw,3rem)}
-.hero p{margin:.25rem 0; opacity:.96}
-.hero .btn, .hero .btn-outline{margin:.35rem .25rem}
+.hero-inner{padding:5rem 1rem 4rem}
+.hero h1{font-size:clamp(2rem,6vw,3.2rem);margin:0 0 .5rem}
+.hero p{font-size:clamp(1rem,2.4vw,1.1rem);opacity:.96;margin-bottom:1.2rem}
+.hero-ctas .btn{margin:.25rem}
+.badges{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:.6rem}
+.badges span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:.35rem .6rem;border-radius:1rem;font-weight:700}
 
-/* Sections & Headings */
-section{padding:48px 0}
+/* ===============================
+   Sections / Headings
+=================================*/
+.section{padding:3rem 0}
+.section.alt{background:#fff}
 h2{
-  text-align:center;
-  font-size:clamp(1.4rem,3.4vw,2rem);
-  color:#1f1b24;
-  margin:0 0 18px;
+  font-size:1.9rem;margin:0 0 1.1rem;color:#1f1b24;
+  display:inline-block;border-bottom:3px solid var(--lav);padding-bottom:.2rem
 }
-h2::after{
-  content:"";
-  display:block; height:3px; width:84px; margin:10px auto 0;
-  background:var(--lav); border-radius:2px;
-}
-.muted{color:var(--ink-2); text-align:center}
+.muted{color:#666}
 
-/* Service / Pricing Cards (6 boxes) */
+/* ===============================
+   “Our Services” grid (index)
+=================================*/
+.service-grid{
+  display:grid; gap:1rem;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+}
+.service-link{display:block;color:inherit;text-decoration:none}
+.service-card, .service{
+  background:#fff;border:1px solid #eee;border-radius:.8rem;overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,.05); transition:transform .18s, box-shadow .18s;
+}
+.service-card:hover, .service:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
+.service-card img, .service img{
+  width:100%; height:180px; object-fit:cover; display:block;
+}
+.service-card .content, .service .content{padding:0.9rem 1rem}
+.service-card h3, .service h3{margin:.2rem 0; color:var(--purple)}
+
+/* “view” button inside cards (optional) */
+.card-cta{margin:0 1rem 1rem}
+.card-cta .btn{display:inline-block}
+
+/* ===============================
+   Detail pages — Price boxes
+=================================*/
 .price-grid{
-  width:100%;
-  max-width:1120px;
-  margin:20px auto 0;
-  padding:0 16px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  gap:16px;
+  display:grid; gap:1rem;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 }
 .price-card{
-  background:#fff; border:1px solid #eee; border-radius:.9rem;
-  overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,.06);
-  transition:transform .18s ease, box-shadow .18s ease;
+  background:#fff;border:1px solid #eee;border-radius:.8rem;overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
 }
-.price-card:hover{transform:translateY(-4px); box-shadow:0 8px 22px rgba(0,0,0,.10)}
-.price-card img{width:100%; height:140px; object-fit:cover;}
-.pc-body{padding:12px}
-.pc-body h3{margin:.1rem 0 .25rem; color:var(--purple); font-size:1.05rem}
-.pc-body .sqft{color:var(--ink-2); font-size:.95rem; margin:0 0 .6rem}
-
-/* Legacy service cards */
-.service-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px}
-.service{background:#fff; border:1px solid #eee; border-radius:.9rem; padding:1rem; box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.service h3{color:var(--purple); margin:.2rem 0}
-
-/* Contact / Forms */
-.contact-grid{display:grid; gap:16px}
-@media (min-width:860px){ .contact-grid{grid-template-columns:1fr 1fr} }
-form{display:grid; gap:.6rem}
-input, select, textarea{
-  width:100%; padding:.7rem; border-radius:.55rem; border:1px solid #ddd; background:#fff;
+.price-card img{
+  width:100%; height:140px; object-fit:cover; display:block;
 }
-textarea{min-height:140px}
+.price-card .content{padding:.9rem 1rem}
+.price-card h3{margin:.2rem 0;color:var(--purple)}
+.price-card .sqft{color:#666;font-size:.95rem;margin:.1rem 0 .2rem}
+.price-card .amount{font-weight:800;color:#1f1b24}
 
-/* Footer */
-footer{
-  text-align:center; color:#666; background:#fff; border-top:1px solid #eee;
-  padding:18px;
-}
-
-/* Utilities */
-.center{text-align:center}
-.hidden{display:none!important}
-
-/* Inner page hero */
+/* Page hero (detail pages) */
 .page-hero{
-  background: linear-gradient(135deg, var(--purple) 0%, var(--lav) 55%, #3b1556 100%);
-  color:#fff; text-align:center; padding:42px 16px; margin-bottom:18px;
+  background:linear-gradient(135deg, var(--purple) 0%, var(--lav) 60%, #3b1556 100%);
+  color:#fff;text-align:center;padding:3rem 1rem;margin-bottom:1.5rem
 }
-.page-hero h1{margin:0; font-size:clamp(1.8rem,4.2vw,2.6rem)}
+.page-hero h1{margin:0;font-size:clamp(2rem,6vw,3rem)}
+
+/* Feature bullets (detail pages) */
+.features{max-width:900px;margin:0 auto 1.5rem;display:grid;gap:.6rem;padding:0 1rem}
+.features li{
+  list-style:none;background:#fff;border:1px solid #eee;border-left:6px solid var(--purple);
+  border-radius:.6rem;padding:.75rem 1rem;box-shadow:0 2px 10px rgba(0,0,0,.05)
+}
+
+/* ===============================
+   Contact
+=================================*/
+.contact .contact-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media (min-width:860px){.contact .contact-grid{grid-template-columns:1fr 1fr}}
+.contact form{
+  display:grid;gap:.6rem;background:#fff;border:1px solid #eee;border-radius:.8rem;
+  padding:1rem;box-shadow:0 2px 10px rgba(0,0,0,.05)
+}
+.contact input,.contact select,.contact textarea{
+  padding:.7rem;border:1px solid #ddd;border-radius:.5rem;width:100%
+}
+.contact textarea{min-height:140px}
+.note{background:#fff;border:1px dashed var(--lav);padding:.75rem;border-radius:.6rem;margin-top:.5rem}
+
+/* ===============================
+   “Successful Clients” gallery
+=================================*/
+.gallery-grid{
+  display:grid;gap:1rem;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
+.gallery-card{
+  background:#fff;border:1px solid #eee;border-radius:.8rem;overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,.05)
+}
+.gallery-card img{width:100%;height:150px;object-fit:cover;display:block}
+.gallery-card .meta{padding:.7rem 1rem}
+.gallery-card .meta h4{margin:.1rem 0;color:var(--purple);font-size:1rem}
+.gallery-card .meta .small{color:#666;font-size:.9rem}
+
+/* ===============================
+   Footer
+=================================*/
+.site-footer{
+  background:#fff;color:#666;text-align:center;border-top:1px solid #eee;padding:1rem;margin-top:2rem
+}
+
+/* ===============================
+   Utilities / Helpers
+=================================*/
+.center{text-align:center}
+.hide{display:none !important}
