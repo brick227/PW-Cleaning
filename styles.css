@@ -54,13 +54,18 @@ a:hover{text-decoration:underline}
 /* =========================================================
    Hero (fixes duplicate image; keeps single centered photo)
 ========================================================= */
-.hero{
-  min-height:60vh;
-  display:grid; place-items:center; text-align:center; color:#fff;
-  /* single image + overlay (NO repeat) */
+.hero {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #fff;
+
+  /* ✅ single full-width background image */
   background:
-    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+    linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
     url('images/pw-hero.jpg') center center / cover no-repeat;
+}
 }
 .hero-inner{padding:3.5rem 1rem}
 .hero h1{font-size:clamp(2rem,4.8vw,3.2rem);margin:.2rem 0 .5rem}
