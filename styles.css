@@ -1,43 +1,200 @@
-/* ===== Polishing for JS features ===== */
-
-/* Sticky header shadow (toggled by JS) */
-.site-header.with-shadow {
-  box-shadow: 0 10px 24px rgba(0,0,0,.12);
+/* ================================
+   PW Cleaning — Global Theme
+   ================================ */
+:root{
+  --purple:#6A1B9A;
+  --lav:#B39DDB;
+  --cream:#FFF8E7;
+  --gold:#C6A664;
+  --char:#2E2E2E;
 }
 
-/* Inline form feedback under the submit button */
-.form-message {
-  font-size: .95rem;
-  margin-top: .5rem;
-  padding: .5rem .75rem;
-  border-radius: .5rem;
-  background: #fff;
-  border: 1px solid #e8e0f6; /* soft purple border */
+*{ box-sizing:border-box }
+html,body{ margin:0; padding:0 }
+img{ max-width:100%; height:auto; display:block }
+
+/* Typography & base */
+body{
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color: var(--char);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering: optimizeLegibility;
+}
+a{ color: var(--purple); text-decoration: none }
+a:hover{ text-decoration: underline }
+.container{ max-width:1100px; margin:0 auto; padding:0 1rem }
+
+/* Make anchored sections not hide under sticky header */
+section{ scroll-margin-top: 86px; }
+
+/* ================================
+   Header
+   ================================ */
+.site-header{
+  position: sticky; top: 0; z-index: 50;
+  background: var(--purple); color:#fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+.header-row{ display:flex; align-items:center; justify-content:space-between; height:64px }
+.brand{ color:#fff; font-weight:900; letter-spacing:.5px; font-size:1.2rem }
+.brand span{ color: var(--gold) }
+.main-nav a{
+  color:#fff; margin-left:1rem; font-weight:700; opacity:.95;
+}
+.main-nav a:hover{ opacity:1 }
+.btn{
+  background: var(--gold); color:#000; font-weight:800;
+  padding:.6rem .9rem; border-radius:.55rem; display:inline-block
+}
+.btn-sm{ padding:.45rem .7rem }
+.btn-outline{
+  background: transparent; color:#fff; border:2px solid #fff;
 }
 
-/* Lightbox (optional class-based styling if you switch from inline styles) */
-.lightbox-overlay {
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,.8);
-  display: none; /* JS sets to flex */
-  align-items: center; justify-content: center;
-  z-index: 9999; padding: 20px;
+/* ================================
+   Hero
+   ================================ */
+.hero{
+  min-height: 58vh;
+  color:#fff; text-align:center; display:grid; align-items:center;
+  background:
+    linear-gradient(135deg, rgba(106,27,154,.9) 0%, rgba(179,157,219,.65) 60%, rgba(59,21,86,.9) 100%),
+    url('images/pw-hero.jpg') center/cover no-repeat;
 }
-.lightbox-overlay img {
-  max-width: 92vw; max-height: 92vh;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.5);
-  object-fit: contain;
+.hero-inner{ padding:4rem 1rem }
+.hero h1{ margin:0 0 .5rem; font-size: clamp(2rem, 5vw, 3rem) }
+.hero p{ margin:.25rem 0 1.2rem; font-size: clamp(1rem, 2.4vw, 1.2rem); opacity:.95 }
+.hero-ctas .btn{ margin:.25rem }
+.badges{
+  display:flex; gap:.6rem; justify-content:center; flex-wrap:wrap; margin-top:.75rem
+}
+.badges span{
+  background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3);
+  padding:.35rem .6rem; border-radius:1rem; font-weight:700
 }
 
-/* Gallery items (for your Successful Clients grid) */
-.gallery-item {
-  cursor: zoom-in;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
-  transition: transform .15s ease, box-shadow .15s ease;
+/* ================================
+   Sections / Headings
+   ================================ */
+.section{ padding:3rem 0 }
+.section.alt{ background:#fff }
+h2{
+  color:#1f1b24; font-size:1.9rem; margin:.2rem 0 1rem;
+  border-bottom:3px solid var(--lav); display:inline-block; padding-bottom:.2rem
 }
-.gallery-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+.muted{ color:#666 }
+.small{ font-size:.9rem }
+
+/* ================================
+   Services grid (cards are links)
+   ================================ */
+.service-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap:1rem;
 }
+.service-link{ display:block; color:inherit; text-decoration:none }
+.service{
+  background:#fff; border:1px solid #eee; border-radius:.8rem; padding:1rem;
+  box-shadow:0 2px 10px rgba(0,0,0,.05); transition:transform .18s ease, box-shadow .18s ease;
+}
+.service img{
+  width:100%; height:200px; object-fit:cover; border-radius:.6rem; margin-bottom:.6rem
+}
+.service h3{ margin:.35rem 0; color:var(--purple) }
+.service-link:hover .service{
+  transform: translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,.12)
+}
+
+/* ================================
+   “Why Us” bullets
+   ================================ */
+.icons{
+  list-style:none; padding:0; margin:0;
+  display:grid; gap:.7rem; max-width:800px;
+}
+.icons li{
+  background:#fff; border:1px solid #eee; border-left:6px solid var(--purple);
+  border-radius:.6rem; padding:.85rem 1rem; box-shadow:0 2px 10px rgba(0,0,0,.05)
+}
+
+/* ================================
+   Successful Clients gallery
+   ================================ */
+.gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap:1rem;
+}
+.gallery-item{
+  background:#fff; border:1px solid #eee; border-radius:.7rem; overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,.05)
+}
+.gallery-item img{ width:100%; height:180px; object-fit:cover }
+.gallery-item figcaption{ padding:.7rem 1rem; font-weight:600; color:#3b2a46 }
+
+/* ================================
+   Contact
+   ================================ */
+.contact .contact-grid{
+  display:grid; gap:1rem; grid-template-columns:1fr;
+}
+@media (min-width:860px){
+  .contact .contact-grid{ grid-template-columns: 1fr 1fr; }
+}
+.contact form{
+  display:grid; gap:.65rem; background:#fff; border:1px solid #eee; border-radius:.8rem;
+  padding:1rem; box-shadow:0 2px 10px rgba(0,0,0,.05)
+}
+.contact input, .contact select, .contact textarea{
+  width:100%; padding:.7rem; border:1px solid #ddd; border-radius:.5rem; background:#fff;
+}
+.contact textarea{ min-height:140px }
+.note{
+  background:#fff; border:1px dashed var(--lav); padding:.8rem; border-radius:.6rem; margin-top:.5rem
+}
+
+/* ================================
+   Footer
+   ================================ */
+.site-footer{
+  background:#fff; color:#666; border-top:1px solid #eee;
+  text-align:center; padding:1.1rem; margin-top:2rem
+}
+
+/* ================================
+   Detail pages: features + pricing boxes
+   ================================ */
+.page-hero{
+  background: linear-gradient(135deg, var(--purple) 0%, var(--lav) 60%, #3b1556 100%);
+  color:#fff; text-align:center; padding:3rem 1rem; margin-bottom:1.5rem;
+}
+.page-hero h1{ margin:0; font-size: clamp(2rem, 6vw, 3rem) }
+
+.features{
+  max-width:900px; margin:0 auto 1rem; display:grid; gap:.6rem; padding:0 1rem;
+}
+.features li{
+  list-style:none; background:#fff; border:1px solid #eee; border-left:6px solid var(--purple);
+  border-radius:.6rem; padding:.75rem 1rem;
+}
+
+/* Reusable pricing boxes (used on Basic, Deep, Move-In, Office pages) */
+.price-grid{
+  display:grid; gap:1rem; margin-top:1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.price-card{
+  background:#fff; border:1px solid #eee; border-radius:.8rem; overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,.05)
+}
+.price-card img{ width:100%; height:160px; object-fit:cover }
+.price-card .pc-body{ padding:.9rem 1rem }
+.price-card h3{ margin:.2rem 0; color:var(--purple); font-size:1.05rem }
+.price-card .sqft{ color:#555; font-weight:600; margin:.15rem 0 }
+.price-card .amount{ font-weight:900; color:#1f1b24 }
+
+/* Small helper */
+.center{ text-align:center }
