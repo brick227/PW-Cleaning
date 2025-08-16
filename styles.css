@@ -1,166 +1,345 @@
-/* =========================
-   PW Cleaning – styles.css
-   ========================= */
-
-/* Theme */
-:root{
-  --purple:#6A1B9A;
-  --lav:#B39DDB;
-  --cream:#FFF8E7;
-  --gold:#C6A664;
-  --char:#2E2E2E;
+/* RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Base */
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--char);
-  background:var(--cream);
-  line-height:1.6;
-}
-a{color:var(--purple);text-decoration:none}
-a:hover{text-decoration:underline}
-img{max-width:100%;display:block}
-.container{max-width:1100px;margin:0 auto;padding:1rem}
-
-/* Anchor offset so sticky header doesn't hide targets */
-section[id]{scroll-margin-top:90px}
-
-/* Header */
-.site-header{
-  background:var(--purple);
-  color:#fff;
-  position:sticky; top:0; z-index:100;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
-}
-.header-row{display:flex;align-items:center;justify-content:space-between}
-.brand{font-weight:900;letter-spacing:.5px;color:#fff;font-size:1.25rem}
-.brand span{color:var(--gold)}
-.main-nav a{color:#fff;margin-left:1rem;font-weight:700;opacity:.95}
-.main-nav a:hover{opacity:1}
-.btn{background:var(--gold);color:#000;padding:.6rem .9rem;border-radius:.5rem;font-weight:800;display:inline-block}
-.btn-sm{padding:.45rem .7rem}
-.btn-outline{background:transparent;color:#fff;border:2px solid #fff}
-
-/* Hero (semi-transparent overlay so photo shows) */
-.hero{
-  min-height:60vh; display:grid; align-items:center; color:#fff; text-align:center;
-  background:
-    linear-gradient(135deg,
-      rgba(106,27,154,.78) 0%,
-      rgba(179,157,219,.66) 60%,
-      rgba(59,21,86,.78) 100%
-    ),
-    url('images/pw-hero.jpg') center/cover no-repeat;
-}
-.hero-inner{padding:4rem 1rem}
-.hero h1{font-size:clamp(2rem,6vw,3.2rem);margin:0 0 .5rem}
-.hero p{font-size:clamp(1rem,2.4vw,1.2rem);opacity:.95;margin-bottom:1.2rem}
-.hero-ctas .btn{margin:.25rem}
-.badges{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:.75rem}
-.badges span{
-  background:rgba(255,255,255,.15);
-  border:1px solid rgba(255,255,255,.3);
-  padding:.35rem .6rem;border-radius:1rem;font-weight:700
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #fdfdfd;
 }
 
-/* Sections */
-.section{padding:3rem 0}
-.section.alt{background:#fff}
-h2{
-  font-size:1.9rem;margin:.2rem 0 1rem;color:#1f1b24;
-  border-bottom:3px solid var(--lav);display:inline-block;padding-bottom:.2rem
-}
-.muted{color:#666}
-
-/* Services grid (home) */
-.service-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem
-}
-.service{
-  background:#fff;border:1px solid #eee;border-radius:.8rem;padding:1rem;
-  box-shadow:0 2px 10px rgba(0,0,0,.05)
-}
-.service img{width:100%;height:200px;object-fit:cover;border-radius:.6rem;margin-bottom:.6rem}
-.service h3{margin:.3rem 0;color:var(--purple)}
-.service-link{display:block;color:inherit;text-decoration:none}
-.service-link .service{transition:transform .18s ease,box-shadow .18s ease}
-.service-link:hover .service,
-.service-link:focus-visible .service{
-  transform:translateY(-4px);box-shadow:0 6px 18px rgba(0,0,0,.10)
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-/* Icons list (Why Us) */
-.icons{list-style:none;padding:0;display:grid;gap:.6rem;max-width:800px;margin:0 auto}
-.icons li{
-  background:#fff;border:1px solid #eee;border-left:6px solid var(--purple);
-  border-radius:.6rem;padding:.8rem 1rem;box-shadow:0 2px 10px rgba(0,0,0,.05)
+img {
+  max-width: 100%;
+  display: block;
 }
 
-/* Contact */
-.contact .contact-grid{display:grid;grid-template-columns:1fr;gap:1rem}
-@media (min-width:860px){.contact .contact-grid{grid-template-columns:1fr 1fr}}
-.contact form{
-  display:grid;gap:.6rem;background:#fff;border:1px solid #eee;border-radius:.8rem;
-  padding:1rem;box-shadow:0 2px 10px rgba(0,0,0,.05)
-}
-.contact input,.contact select,.contact textarea{
-  padding:.7rem;border:1px solid #ddd;border-radius:.5rem;width:100%
-}
-.contact textarea{min-height:140px}
-.note{
-  background:#fff;border:1px dashed var(--lav);padding:.75rem;border-radius:.6rem;margin-top:.5rem
+/* CONTAINER */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* Service detail pages */
-.page-hero{
-  background:linear-gradient(135deg, var(--purple) 0%, var(--lav) 60%, #3b1556 100%);
-  color:#fff;text-align:center;padding:3rem 1rem;margin-bottom:1.5rem
-}
-.page-hero h1{margin:0;font-size:clamp(2rem,6vw,3rem)}
-.features{max-width:900px;margin:0 auto;display:grid;gap:.6rem;padding:0 1rem}
-.features li{
-  background:#fff;border:1px solid #eee;border-left:6px solid var(--purple);
-  border-radius:.6rem;padding:.75rem 1rem;list-style:none
+/* HEADER */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* Pricing TABLE (kept if any page still uses it) */
-.pricing-table{
-  width:100%;max-width:900px;margin:1rem auto;border-collapse:collapse;background:#fff;
-  border:1px solid #eee;border-radius:.6rem;overflow:hidden
-}
-.pricing-table th,.pricing-table td{padding:.8rem 1rem;border-bottom:1px solid #f0f0f0;text-align:left}
-.pricing-table thead th{background:#f8f5ff;color:#1f1b24}
-.pricing-table tbody tr:hover{background:#faf9ff}
-
-/* Pricing BOXES (Basic & Deep Cleaning) */
-.pricing-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:1rem;
-  margin-top:1rem
-}
-.price-card{
-  background:#fff;border:1px solid #eee;border-radius:.8rem;padding:1rem;text-align:center;
-  box-shadow:0 2px 10px rgba(0,0,0,.05);
-  transition:transform .2s ease,box-shadow .2s ease
-}
-.price-card:hover{transform:translateY(-4px);box-shadow:0 6px 18px rgba(0,0,0,.1)}
-.price-card img{width:100%;height:140px;object-fit:cover;border-radius:.6rem;margin-bottom:.6rem}
-.price-card h3{margin:.5rem 0 .25rem;color:var(--purple)}
-.price-card p{margin:.25rem 0;color:#444;font-weight:600}
-
-/* Back link */
-.back-link{display:inline-block;margin:1rem 0 0;color:var(--purple);font-weight:700}
-
-/* Footer */
-.site-footer{
-  background:#fff;color:#666;text-align:center;border-top:1px solid #eee;padding:1rem
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  *{animation:none !important;transition:none !important}
+.brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #0077cc;
+}
+
+.brand span {
+  color: #333;
+}
+
+.main-nav a {
+  margin-left: 1.5rem;
+  font-size: 1rem;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover {
+  color: #0077cc;
+}
+
+.btn {
+  background: #0077cc;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #005fa3;
+}
+
+.btn-outline {
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background: #fff;
+  color: #0077cc;
+}
+
+/* HERO (Home Page) */
+.hero {
+  background: url("images/hero.jpg") no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding: 6rem 1rem;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero .hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-ctas {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.badges {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.badges span {
+  background: #0077cc;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+/* PAGE HERO (Service Pages) */
+.page-hero {
+  background: url("images/service-hero.jpg") no-repeat center center;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding: 4rem 1rem;
+  position: relative;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.page-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* SECTIONS */
+.section {
+  padding: 4rem 1rem;
+}
+
+.section.alt {
+  background: #f4f4f4;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section p.muted {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* SERVICE GRID */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.service {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.service:hover {
+  transform: translateY(-5px);
+}
+
+.service img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.service h3 {
+  font-size: 1.2rem;
+  margin: 0.8rem 0;
+}
+
+.service p {
+  font-size: 0.95rem;
+  padding: 0 1rem 1rem;
+  color: #666;
+}
+
+/* FEATURES */
+.features {
+  list-style: none;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.features li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.features li::before {
+  content: "✔";
+  color: #0077cc;
+  position: absolute;
+  left: 0;
+}
+
+/* PRICING BOXES */
+.pricing-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.price-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.price-box img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 0.8rem;
+}
+
+.price-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.price-box p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* CONTACT */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact input,
+.contact select,
+.contact textarea {
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact button {
+  background: #0077cc;
+  color: #fff;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact button:hover {
+  background: #005fa3;
+}
+
+/* FOOTER */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #333;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .header-row {
+    flex-direction: column;
+  }
+
+  .main-nav {
+    margin-top: 1rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
