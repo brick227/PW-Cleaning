@@ -1,6 +1,4 @@
-/* ===============================
-   PW Cleaning — Global Theme
-=================================*/
+/* ====== PW Cleaning – Global Theme ====== */
 :root{
   --purple:#6A1B9A;
   --lav:#B39DDB;
@@ -17,157 +15,119 @@ body{
   background:var(--cream);
   line-height:1.6;
 }
+
+/* Utilities */
+.container{max-width:1100px;margin:0 auto;padding:0 1rem}
 a{color:var(--purple);text-decoration:none}
 a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+.muted{color:#6b6b6b}
 
-/* ===============================
-   Header / Navigation (fixed)
-=================================*/
+/* ====== Header / Nav ====== */
 .site-header{
-  background:var(--purple);
-  color:#fff;
-  position:sticky; top:0; z-index:1000;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  position:sticky; top:0; z-index:50;
+  background:var(--purple); color:#fff;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
 }
 .header-row{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0.9rem 0;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.8rem 0;
 }
-.brand{font-weight:900;letter-spacing:.5px;color:#fff;font-size:1.25rem}
+.brand{color:#fff;font-weight:900;letter-spacing:.3px;font-size:1.15rem}
 .brand span{color:var(--gold)}
-.main-nav a{
-  color:#fff; margin-left:1.2rem; font-weight:600; opacity:.95; white-space:nowrap;
-}
+.main-nav a{color:#fff;margin-left:1rem;font-weight:700;opacity:.95}
 .main-nav a:hover{opacity:1}
-.btn{background:var(--gold);color:#000;padding:.55rem .85rem;border-radius:.5rem;font-weight:800;display:inline-block}
+.btn{
+  display:inline-block; border-radius:.6rem; font-weight:800;
+  padding:.6rem .9rem; background:var(--gold); color:#000;
+}
 .btn-sm{padding:.45rem .7rem}
 .btn-outline{background:transparent;color:#fff;border:2px solid #fff}
 
-/* ===============================
-   Hero
-=================================*/
+/* ====== Hero (image + soft gradient overlay) ====== */
 .hero{
-  min-height:60vh; display:grid; align-items:center; color:#fff; text-align:center;
-  background:
-    radial-gradient(60% 80% at 20% 10%, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 70%),
-    linear-gradient(135deg, var(--purple) 0%, var(--lav) 60%, #3b1556 100%),
-    url('images/pw-hero.jpg') center/cover no-repeat;
+  position:relative; color:#fff; text-align:center;
+  min-height:62vh; display:grid; place-items:center;
+  background-position:center; background-size:cover; background-repeat:no-repeat;
 }
-.hero-inner{padding:5rem 1rem 4rem}
-.hero h1{font-size:clamp(2rem,6vw,3.2rem);margin:0 0 .5rem}
-.hero p{font-size:clamp(1rem,2.4vw,1.1rem);opacity:.96;margin-bottom:1.2rem}
-.hero-ctas .btn{margin:.25rem}
-.badges{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:.6rem}
-.badges span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:.35rem .6rem;border-radius:1rem;font-weight:700}
+.hero::before{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(106,27,154,.85) 0%, rgba(179,157,219,.65) 55%, rgba(59,21,86,.85) 100%);
+}
+.hero-content{position:relative; padding:4rem 0}
+.hero h1{
+  margin:0 0 .6rem; font-weight:900;
+  font-size:clamp(2rem, 5.8vw, 3.2rem);
+  letter-spacing:.3px;
+}
+.hero p{margin:0 0 1.2rem; font-size:clamp(1rem,2.4vw,1.15rem); opacity:.98}
 
-/* ===============================
-   Sections / Headings
-=================================*/
+/* ====== Sections / Headings ====== */
 .section{padding:3rem 0}
 .section.alt{background:#fff}
-h2{
-  font-size:1.9rem;margin:0 0 1.1rem;color:#1f1b24;
-  display:inline-block;border-bottom:3px solid var(--lav);padding-bottom:.2rem
+.section h2{
+  text-align:center; color:#1f1b24; margin:0 0 1.2rem;
+  font-size:clamp(1.6rem,3.6vw,2rem);
+  font-weight:900; letter-spacing:.2px;
 }
-.muted{color:#666}
+.section h2::after{
+  content:""; display:block; width:100px; height:4px; margin:.6rem auto 0;
+  background:linear-gradient(90deg, var(--lav), var(--purple));
+  border-radius:4px;
+}
 
-/* ===============================
-   “Our Services” grid (index)
-=================================*/
+/* ====== Service cards (grid) ====== */
 .service-grid{
   display:grid; gap:1rem;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 }
-.service-link{display:block;color:inherit;text-decoration:none}
-.service-card, .service{
-  background:#fff;border:1px solid #eee;border-radius:.8rem;overflow:hidden;
-  box-shadow:0 2px 10px rgba(0,0,0,.05); transition:transform .18s, box-shadow .18s;
+.service-link{display:block; color:inherit; text-decoration:none}
+.service{
+  background:#fff; border:1px solid #eee; border-radius:.9rem; padding:1rem;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+  transition:transform .18s ease, box-shadow .18s ease;
 }
-.service-card:hover, .service:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.service-card img, .service img{
-  width:100%; height:180px; object-fit:cover; display:block;
+.service:hover{transform:translateY(-4px); box-shadow:0 8px 22px rgba(0,0,0,.12)}
+.service img{
+  width:100%; height:180px; object-fit:cover; border-radius:.6rem; margin-bottom:.6rem;
 }
-.service-card .content, .service .content{padding:0.9rem 1rem}
-.service-card h3, .service h3{margin:.2rem 0; color:var(--purple)}
+.service h3{margin:.35rem 0; color:var(--purple)}
 
-/* “view” button inside cards (optional) */
-.card-cta{margin:0 1rem 1rem}
-.card-cta .btn{display:inline-block}
-
-/* ===============================
-   Detail pages — Price boxes
-=================================*/
-.price-grid{
-  display:grid; gap:1rem;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-}
-.price-card{
-  background:#fff;border:1px solid #eee;border-radius:.8rem;overflow:hidden;
-  box-shadow:0 2px 10px rgba(0,0,0,.05);
-}
-.price-card img{
-  width:100%; height:140px; object-fit:cover; display:block;
-}
-.price-card .content{padding:.9rem 1rem}
-.price-card h3{margin:.2rem 0;color:var(--purple)}
-.price-card .sqft{color:#666;font-size:.95rem;margin:.1rem 0 .2rem}
-.price-card .amount{font-weight:800;color:#1f1b24}
-
-/* Page hero (detail pages) */
-.page-hero{
-  background:linear-gradient(135deg, var(--purple) 0%, var(--lav) 60%, #3b1556 100%);
-  color:#fff;text-align:center;padding:3rem 1rem;margin-bottom:1.5rem
-}
-.page-hero h1{margin:0;font-size:clamp(2rem,6vw,3rem)}
-
-/* Feature bullets (detail pages) */
-.features{max-width:900px;margin:0 auto 1.5rem;display:grid;gap:.6rem;padding:0 1rem}
-.features li{
-  list-style:none;background:#fff;border:1px solid #eee;border-left:6px solid var(--purple);
-  border-radius:.6rem;padding:.75rem 1rem;box-shadow:0 2px 10px rgba(0,0,0,.05)
+/* ====== Icon list (“Why Us”) ====== */
+.icons{list-style:none; padding:0; margin:0 auto; max-width:900px; display:grid; gap:.7rem}
+.icons li{
+  background:#fff; border:1px solid #eee; border-left:6px solid var(--purple);
+  border-radius:.6rem; padding:.8rem 1rem; box-shadow:0 2px 10px rgba(0,0,0,.05)
 }
 
-/* ===============================
-   Contact
-=================================*/
-.contact .contact-grid{display:grid;grid-template-columns:1fr;gap:1rem}
-@media (min-width:860px){.contact .contact-grid{grid-template-columns:1fr 1fr}}
+/* ====== Contact ====== */
+.contact .contact-grid{display:grid; gap:1rem}
+@media (min-width:860px){ .contact .contact-grid{grid-template-columns:1fr 1fr} }
 .contact form{
-  display:grid;gap:.6rem;background:#fff;border:1px solid #eee;border-radius:.8rem;
-  padding:1rem;box-shadow:0 2px 10px rgba(0,0,0,.05)
+  display:grid; gap:.6rem; background:#fff; border:1px solid #eee; border-radius:.9rem;
+  padding:1rem; box-shadow:0 2px 12px rgba(0,0,0,.06)
 }
 .contact input,.contact select,.contact textarea{
-  padding:.7rem;border:1px solid #ddd;border-radius:.5rem;width:100%
+  width:100%; padding:.7rem; border:1px solid #ddd; border-radius:.5rem
 }
 .contact textarea{min-height:140px}
-.note{background:#fff;border:1px dashed var(--lav);padding:.75rem;border-radius:.6rem;margin-top:.5rem}
-
-/* ===============================
-   “Successful Clients” gallery
-=================================*/
-.gallery-grid{
-  display:grid;gap:1rem;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+.note{
+  background:#fff; border:1px dashed var(--lav); color:#4a4a4a;
+  padding:.75rem; border-radius:.6rem
 }
-.gallery-card{
-  background:#fff;border:1px solid #eee;border-radius:.8rem;overflow:hidden;
-  box-shadow:0 2px 10px rgba(0,0,0,.05)
-}
-.gallery-card img{width:100%;height:150px;object-fit:cover;display:block}
-.gallery-card .meta{padding:.7rem 1rem}
-.gallery-card .meta h4{margin:.1rem 0;color:var(--purple);font-size:1rem}
-.gallery-card .meta .small{color:#666;font-size:.9rem}
 
-/* ===============================
-   Footer
-=================================*/
+/* ====== Successful Clients (placeholder gallery style) ====== */
+.gallery{display:grid; gap:.8rem; grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.gallery img{width:100%; height:160px; object-fit:cover; border-radius:.6rem}
+
+/* ====== Footer ====== */
 .site-footer{
-  background:#fff;color:#666;text-align:center;border-top:1px solid #eee;padding:1rem;margin-top:2rem
+  background:#fff; color:#666; text-align:center;
+  border-top:1px solid #eee; padding:1rem
 }
 
-/* ===============================
-   Utilities / Helpers
-=================================*/
-.center{text-align:center}
-.hide{display:none !important}
+/* ====== Small tweaks for very narrow screens ====== */
+@media (max-width:420px){
+  .main-nav a{margin-left:.7rem}
+  .hero{min-height:56vh}
+  .service img{height:160px}
+}
