@@ -1,157 +1,93 @@
-/* ================================
-   PW Cleaning – styles.css (fixed)
-   ================================ */
-
-/* Theme */
 :root {
   --purple: #6A1B9A;
-  --cream:  #FFF8E7;
-  --gold:   #C6A664;
-  --char:   #2E2E2E;
-  --lav:    #B39DDB;
+  --cream: #FFF8E7;
+  --lav: #B39DDB;
+  --char: #2E2E2E;
 }
 
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+/* General */
 body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--cream);
   color: var(--char);
-  background: var(--cream);
-  line-height: 1.55;
 }
-a { color: var(--purple); text-decoration: none; }
-a:hover { text-decoration: underline; }
-.container { max-width: 1100px; margin: 0 auto; padding: 1rem; }
-
-/* Header */
-.site-header {
-  background: var(--purple);
-  color: #fff;
-  position: sticky; top: 0; z-index: 10;
-  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+h2 {
+  color: var(--purple);
+  text-align: center;
 }
-.header-row { display: flex; align-items: center; justify-content: space-between; }
-.brand { font-weight: 900; letter-spacing: .5px; color: #fff; font-size: 1.25rem; }
-.brand span { color: var(--gold); }
-.site-header nav a { color: #fff; margin-left: 1rem; font-weight: 700; opacity: .95; }
-.site-header nav a:hover { opacity: 1; }
-.btn { background: var(--gold); color: #000; padding: .6rem .9rem; border-radius: .5rem; font-weight: 800; display: inline-block; }
-.btn-sm { padding: .45rem .7rem; }
-.btn-outline { background: transparent; color: #fff; border: 2px solid #fff; }
 
-/* Hero (gradient always; image optional if present) */
+/* Hero Section */
 .hero {
   min-height: 58vh;
   display: grid;
   align-items: center;
   text-align: center;
   color: #fff;
-  /* If images/pw-hero.jpg exists it will show under the gradient;
-     if not, the gradient still appears. */
-  background:
-    linear-gradient(135deg, var(--purple) 0%, var(--lav) 60%, #3b1556 100%),
-    url('images/pw-hero.jpg') center/cover no-repeat;
+  background: linear-gradient(135deg, var(--purple) 0%, var(--lav) 60%, #3b1556 100%),
+              url('images/pw-hero.jpg') center/cover no-repeat;
 }
-.hero-inner { padding: 4rem 1rem; }
-.hero h1 { font-size: clamp(2rem, 6vw, 3.2rem); margin: 0 0 .5rem; }
-.hero p { font-size: clamp(1rem, 2.4vw, 1.2rem); opacity: .95; margin-bottom: 1.2rem; }
-.hero-ctas .btn { margin: .25rem; }
-
-/* Section headings */
-h2 {
-  font-size: 1.8rem;
-  margin: .5rem 0 1rem;
-  color: #1f1b24;
-  border-bottom: 3px solid var(--lav);
-  display: inline-block;
-  padding-bottom: .2rem;
+.hero-inner {
+  padding: 4rem 1rem;
 }
-.muted { color: #6b6b6b; }
-.small { font-size: .9rem; }
-
-/* Generic cards (if you use <ul class="cards">) */
-.cards {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  padding: 0;
-  margin: 1rem 0;
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin: 0;
 }
-.cards li {
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: .8rem;
-  padding: 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.95;
 }
-.cards strong { color: var(--purple); }
-
-/* Reviews */
-.reviews {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  gap: .8rem;
-  margin: 1rem 0;
+.hero nav a {
+  margin: 0 15px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
 }
-.reviews li {
-  background: #fff;
-  border: 1px solid #eee;
-  border-left: 6px solid var(--purple);
-  border-radius: .6rem;
-  padding: .8rem 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+.hero nav a:hover {
+  text-decoration: underline;
 }
 
-/* Contact */
-.contact .contact-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-@media (min-width: 860px) { .contact .contact-grid { grid-template-columns: 1fr 1fr; } }
-.contact form {
-  display: grid; gap: .6rem;
-  background: #fff; border: 1px solid #eee; border-radius: .8rem;
-  padding: 1rem; box-shadow: 0 2px 10px rgba(0,0,0,.05);
-}
-.contact input, .contact select, .contact textarea {
-  padding: .7rem; border: 1px solid #ddd; border-radius: .5rem; width: 100%;
-}
-.contact textarea { min-height: 140px; }
-.note { background: #fff; border: 1px dashed var(--lav); padding: .75rem; border-radius: .6rem; margin-top: .5rem; }
-
-/* Footer */
-.site-footer {
-  background: #fff; color: #666; text-align: center;
-  border-top: 1px solid #eee; padding: 1rem; margin-top: 2rem;
-}
-
-/* ---------- Services with Images ---------- */
-#services {
-  padding: 50px 20px;
-  background: #f9f9f9;
-  text-align: center;
-}
-#services h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: var(--purple);
-}
+/* Services */
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 .service {
   background: #fff;
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
 }
-.service:hover { transform: translateY(-5px); }
+.service:hover {
+  transform: translateY(-5px);
+}
 .service img {
   width: 100%;
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+}
+.service h3 {
+  margin: 0.5rem 0;
+  color: var(--purple);
+}
+
+/* Contact */
+#contact {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background: var(--purple);
+  color: white;
+  padding: 15px;
+  text-align: center;
 }
